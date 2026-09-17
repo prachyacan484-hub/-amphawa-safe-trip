@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amphawa Safe Trip | เที่ยวอัมพวาอย่างปลอดภัย</title>
+<style>
+:root{--blue:#075985;--teal:#0b8aa0;--sky:#dff7fb;--cream:#fffaf0;--dark:#12343b;--red:#d94841;--green:#2f9e44;--card:#fff;--shadow:0 10px 30px #164e6320}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Thai",sans-serif;color:var(--dark);background:#f5fbfc}
+header{background:linear-gradient(135deg,#064e6b,#087f8c 55%,#22a7b9);color:white;padding:22px 6% 85px;position:relative;overflow:hidden}
+nav{display:flex;justify-content:space-between;align-items:center;max-width:1150px;margin:auto}.logo{font-size:1.25rem;font-weight:800}.navlinks a{color:white;text-decoration:none;margin-left:16px;font-size:.9rem}
+.hero{max-width:1150px;margin:65px auto 0;display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center}
+h1{font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.03;margin:0 0 18px}.hero p{font-size:1.08rem;max-width:680px;opacity:.95}
+.btn{display:inline-block;background:white;color:#075985;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:800;margin:8px 7px 0 0}.btn.primary{background:#ffd166;color:#573b00}
+.weather-card{background:#ffffff20;border:1px solid #ffffff45;backdrop-filter:blur(8px);border-radius:24px;padding:24px}.weather-temp{font-size:3.2rem;font-weight:850}.wave{position:absolute;bottom:-1px;left:0;width:100%;height:55px;background:#f5fbfc;border-radius:50% 50% 0 0/100% 100% 0 0}
+main{max-width:1150px;margin:auto;padding:55px 6%}.section{margin-bottom:65px}.eyebrow{color:var(--teal);font-weight:850;letter-spacing:.08em}.section h2{font-size:2rem;margin:6px 0 10px}.section>p{color:#587078;line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:white;padding:22px;border-radius:20px;box-shadow:var(--shadow);border:1px solid #dceff2}.icon{font-size:2rem}.card h3{margin:9px 0 7px}.card p{color:#61777d;line-height:1.65}
+.route{display:grid;grid-template-columns:1fr 1fr;gap:22px}.routebox{background:white;border-radius:20px;padding:24px;box-shadow:var(--shadow)}.route-step{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid #edf3f4}.num{min-width:32px;height:32px;border-radius:50%;background:#dff6fa;color:#08657a;display:grid;place-items:center;font-weight:800}
+.shop{display:flex;flex-direction:column;gap:10px}.shop .tag{display:inline-block;background:#e8f8fb;color:#08758a;border-radius:999px;padding:5px 10px;font-size:.78rem;font-weight:750;width:max-content}.shop a{color:#075985;font-weight:800;text-decoration:none}.price{font-size:.9rem;color:#6a7d82}
+.emergency{background:#fff4f3;border:1px solid #ffd3cf}.number{font-size:1.55rem;font-weight:900;color:var(--red)}.call{display:inline-block;margin-top:10px;padding:9px 14px;border-radius:10px;background:var(--red);color:white;text-decoration:none;font-weight:800}
+.tip{background:#eaf8ee;border-left:5px solid var(--green);padding:16px 18px;border-radius:12px;margin-top:16px}.small{font-size:.84rem;color:#71878c}
+footer{background:#083b46;color:#dff4f6;text-align:center;padding:30px 6%;line-height:1.7}
+@media(max-width:800px){.hero,.route{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.navlinks{display:none}header{padding-bottom:70px}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<div class="logo">🌊 AMPHAWA SAFE TRIP</div>
+<div class="navlinks"><a href="#tour">เที่ยว</a><a href="#route">เส้นทาง</a><a href="#shops">ร้านท้องถิ่น</a><a href="#safety">ความปลอดภัย</a><a href="#emergency">ฉุกเฉิน</a></div>
+</nav>
+<div class="hero">
+<div>
+<div class="eyebrow" style="color:#b9f3fb">TRAVEL • SAFETY • LOCAL LIFE</div>
+<h1>เที่ยวอัมพวา<br>สนุกได้ ปลอดภัยด้วย</h1>
+<p>คู่มือท่องเที่ยวตลาดน้ำอัมพวา รวมเส้นทาง สภาพอากาศ เบอร์ฉุกเฉิน จุดเที่ยว ข้อควรระวัง และร้านท้องถิ่นที่น่าสนใจ</p>
+<a class="btn primary" href="#safety">🛡️ เช็กความปลอดภัย</a>
+<a class="btn" href="#shops">🍜 ร้านท้องถิ่น</a>
+</div>
+<div class="weather-card">
+<div>🌤️ สภาพอากาศอัมพวา</div>
+<div id="weather" class="weather-temp">กำลังโหลด...</div>
+<div id="weatherDesc">กำลังเช็กข้อมูลล่าสุด...</div>
+<div class="small" style="color:#d9f6fa;margin-top:10px">ระบบจะดึงสภาพอากาศเมื่อเปิดเว็บไซต์</div>
+</div>
+</div><div class="wave"></div>
+</header>
+
+<main>
+<section id="tour" class="section">
+<div class="eyebrow">ABOUT AMPHAWA</div><h2>รายละเอียดการท่องเที่ยว</h2>
+<p>ตลาดน้ำยามเย็นอัมพวาอยู่ริมคลองใกล้วัดอัมพวันเจติยาราม เป็นแหล่งท่องเที่ยวที่มีอาหาร เครื่องดื่ม ขนม ของฝาก และวิถีชีวิตริมคลอง นักท่องเที่ยวสามารถเดินเที่ยวและล่องเรือชมบรรยากาศ รวมถึงชมหิ่งห้อยในช่วงค่ำได้</p>
+<div class="grid">
+<div class="card"><div class="icon">🍢</div><h3>อาหารและของกิน</h3><p>อาหารทะเล อาหารจากเรือ ก๋วยเตี๋ยว หอยทอด ขนมไทย เครื่องดื่ม และของกินเล่น</p></div>
+<div class="card"><div class="icon">🛶</div><h3>ล่องเรือ</h3><p>ชมคลองและวิถีชุมชน และสามารถเลือกบริการล่องเรือชมหิ่งห้อยในช่วงค่ำ</p></div>
+<div class="card"><div class="icon">🏛️</div><h3>วัฒนธรรมใกล้ตลาด</h3><p>แวะวัดอัมพวันเจติยารามและอุทยาน ร.2 เพื่อเรียนรู้ประวัติศาสตร์และวัฒนธรรมท้องถิ่น</p></div>
+</div>
+<div class="tip">📌 <b>เวลาเปิดตลาด:</b> การท่องเที่ยวแห่งประเทศไทยระบุว่าเปิดวันศุกร์ เสาร์ อาทิตย์ และวันนักขัตฤกษ์ เวลา 12.00–21.00 น. ควรตรวจสอบก่อนเดินทางอีกครั้ง</div>
+</section>
+
+<section id="route" class="section">
+<div class="eyebrow">GETTING THERE</div><h2>เส้นทางไปตลาดน้ำอัมพวา</h2>
+<div class="route">
+<div class="routebox">
+<h3>🚗 จากกรุงเทพฯ</h3>
+<div class="route-step"><span class="num">1</span><div>เดินทางจากกรุงเทพฯ มุ่งหน้าสมุทรสงคราม</div></div>
+<div class="route-step"><span class="num">2</span><div>เข้าสู่อำเภออัมพวา ตามป้ายตลาดน้ำอัมพวา</div></div>
+<div class="route-step"><span class="num">3</span><div>จอดรถในพื้นที่ที่จัดไว้ แล้วเดินเข้าสู่ตลาด</div></div>
+<a class="btn primary" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=Amphawa+Floating+Market,+Samut+Songkhram">📍 เปิด Google Maps</a>
+</div>
+<div class="routebox">
+<h3>📍 จุดเที่ยวใกล้เคียง</h3>
+<div class="route-step"><span class="num">A</span><div><b>วัดอัมพวันเจติยาราม</b><br><span class="small">อยู่ใกล้ตลาดน้ำ</span></div></div>
+<div class="route-step"><span class="num">B</span><div><b>อุทยาน ร.2</b><br><span class="small">แหล่งเรียนรู้ประวัติศาสตร์และวัฒนธรรม</span></div></div>
+<div class="route-step"><span class="num">C</span><div><b>อัมพวา ชัยพัฒนานุรักษ์</b><br><span class="small">พื้นที่เรียนรู้และสินค้าจากชุมชน</span></div></div>
+</div></div>
+</section>
+
+<section id="shops" class="section">
+<div class="eyebrow">LOCAL SHOPS</div><h2>แนะนำร้านค้าท้องถิ่น 🍜</h2>
+<p>ตัวอย่างร้านในพื้นที่อัมพวาที่สามารถนำไปวางไว้ในคู่มือได้ ข้อมูลเวลาเปิดอาจเปลี่ยนแปลง ควรตรวจสอบกับร้านก่อนเดินทาง</p>
+<div class="grid">
+<div class="card shop"><span class="tag">🍰 ขนมไทย</span><h3>ตลาดน้ำอัมพวา เกศมณีขนมไทย</h3><p>ร้านขนมหวานในพื้นที่ตลาด เหมาะสำหรับหาขนมไทยและของหวานท้องถิ่น</p><div class="price">เสาร์–อาทิตย์ 09.00–20.00 น.</div><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=ตลาดน้ำอัมพวา+เกศมณีขนมไทย">📍 ดูแผนที่ร้าน</a></div>
+<div class="card shop"><span class="tag">🍬 ขนมไทย</span><h3>นิยมขนมไทย ตลาดน้ำอัมพวา</h3><p>ร้านขนมไทยบริเวณถนนตลาดน้ำ เหมาะสำหรับซื้อขนมและของฝาก</p><div class="price">ศุกร์–อาทิตย์ 09.00–20.00 น.</div><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=นิยมขนมไทย+ตลาดน้ำอัมพวา">📍 ดูแผนที่ร้าน</a></div>
+<div class="card shop"><span class="tag">🦐 อาหารทะเล</span><h3>น้องอุ้มซีฟู๊ด อัมพวา</h3><p>ร้านอาหารทะเลในอำเภออัมพวา เหมาะสำหรับมื้ออาหารท้องถิ่น</p><div class="price">เปิดทุกวันตามข้อมูลล่าสุดที่ค้นพบ</div><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=น้องอุ้มซีฟู๊ด+อัมพวา">📍 ดูแผนที่ร้าน</a></div>
+<div class="card shop"><span class="tag">🍤 อาหาร</span><h3>สุนทรี กุ้งเผา ตลาดน้ำอัมพวา</h3><p>ร้านอาหารในย่านตลาดน้ำ เหมาะสำหรับเมนูกุ้งและอาหารท้องถิ่น</p><div class="price">แนะนำตรวจสอบเวลาเปิดก่อนเดินทาง</div><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=สุนทรี+กุ้งเผา+ตลาดน้ำอัมพวา">📍 ดูแผนที่ร้าน</a></div>
+<div class="card shop"><span class="tag">☕ คาเฟ่</span><h3>Phawanawa Café</h3><p>คาเฟ่ในอำเภออัมพวา เหมาะสำหรับพักและหาเครื่องดื่มก่อนหรือหลังเดินตลาด</p><div class="price">เปิดทุกวันตามข้อมูลล่าสุดที่ค้นพบ</div><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Phawanawa+Cafe+Amphawa">📍 ดูแผนที่ร้าน</a></div>
+<div class="card shop"><span class="tag">🍽️ อาหาร</span><h3>ร้านเจ้าสำราญ อัมพวา</h3><p>ร้านอาหารในพื้นที่อัมพวา เหมาะสำหรับมื้ออาหารหลังเที่ยวตลาด</p><div class="price">เปิดทุกวันตามข้อมูลล่าสุดที่ค้นพบ</div><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=ร้านเจ้าสำราญ+อัมพวา">📍 ดูแผนที่ร้าน</a></div>
+</div>
+</section>
+
+<section id="safety" class="section">
+<div class="eyebrow">SAFETY FIRST</div><h2>ความปลอดภัยในการเที่ยว</h2>
+<div class="grid">
+<div class="card"><div class="icon">🌧️</div><h3>ฝนตก / พื้นลื่น</h3><p>พกร่มหรือเสื้อกันฝน ใส่รองเท้าที่เดินสะดวก และระวังพื้นไม้หรือทางเดินริมน้ำ</p></div>
+<div class="card"><div class="icon">🛶</div><h3>ขึ้นเรือ</h3><p>ปฏิบัติตามคำแนะนำของผู้ให้บริการ สวมเสื้อชูชีพเมื่อมีการจัดให้ และนั่งประจำที่</p></div>
+<div class="card"><div class="icon">👛</div><h3>ทรัพย์สิน</h3><p>บริเวณตลาดอาจมีคนหนาแน่น ควรเก็บโทรศัพท์ กระเป๋า และเงินสดให้มิดชิด</p></div>
+<div class="card"><div class="icon">👨‍👩‍👧</div><h3>เด็กและผู้สูงอายุ</h3><p>ดูแลกันเป็นกลุ่ม โดยเฉพาะบริเวณท่าน้ำ สะพาน และจุดที่คนหนาแน่น</p></div>
+<div class="card"><div class="icon">🍽️</div><h3>อาหารและน้ำ</h3><p>เลือกอาหารที่ปรุงสุกใหม่ สังเกตความสะอาด และดื่มน้ำให้เพียงพอ</p></div>
+<div class="card"><div class="icon">📱</div><h3>ก่อนออกเที่ยว</h3><p>ชาร์จโทรศัพท์ให้พร้อม แชร์แผนการเดินทางกับคนใกล้ตัว และบันทึกเบอร์ฉุกเฉิน</p></div>
+</div>
+</section>
+
+<section id="emergency" class="section">
+<div class="eyebrow">EMERGENCY</div><h2>เบอร์ฉุกเฉิน ☎️</h2>
+<div class="grid">
+<div class="card emergency"><h3>🚓 ตำรวจ</h3><div class="number">191</div><a class="call" href="tel:191">โทร 191</a></div>
+<div class="card emergency"><h3>🚑 แพทย์ฉุกเฉิน</h3><div class="number">1669</div><a class="call" href="tel:1669">โทร 1669</a></div>
+<div class="card emergency"><h3>🔥 ดับเพลิง</h3><div class="number">199</div><a class="call" href="tel:199">โทร 199</a></div>
+<div class="card emergency"><h3>🚔 ตำรวจท่องเที่ยว</h3><div class="number">1155</div><a class="call" href="tel:1155">โทร 1155</a></div>
+</div>
+</section>
+
+<section class="section">
+<div class="eyebrow">TRAVEL CHECKLIST</div><h2>เช็กก่อนออกเดินทาง ✓</h2>
+<div class="card">
+<label><input type="checkbox"> โทรศัพท์และพาวเวอร์แบงก์พร้อม</label><br><br>
+<label><input type="checkbox"> เช็กสภาพอากาศแล้ว</label><br><br>
+<label><input type="checkbox"> บันทึกเบอร์ฉุกเฉิน</label><br><br>
+<label><input type="checkbox"> เตรียมเงินและของใช้จำเป็น</label><br><br>
+<label><input type="checkbox"> วางแผนเวลาเดินทางกลับ</label>
+</div>
+</section>
+</main>
+
+<footer>
+<b>AMPHAWA SAFE TRIP</b><br>
+คู่มือออนไลน์เพื่อส่งเสริมการท่องเที่ยวอัมพวาอย่างปลอดภัย<br>
+<span class="small">ข้อมูลสถานที่และร้านค้าอาจเปลี่ยนแปลง ควรตรวจสอบกับสถานที่โดยตรงก่อนเดินทาง</span>
+</footer>
+
+<script>
+async function loadWeather(){
+ const el=document.getElementById('weather'),desc=document.getElementById('weatherDesc');
+ try{
+  const url='https://api.open-meteo.com/v1/forecast?latitude=13.413&longitude=99.999&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Asia%2FBangkok';
+  const r=await fetch(url);const d=await r.json();const c=d.current;
+  const map={0:'ท้องฟ้าแจ่มใส',1:'มีเมฆเล็กน้อย',2:'มีเมฆบางส่วน',3:'เมฆมาก',45:'หมอก',48:'หมอกจับตัว',51:'ฝนปรอยเล็กน้อย',53:'ฝนปรอย',55:'ฝนปรอยหนัก',61:'ฝนเล็กน้อย',63:'ฝนปานกลาง',65:'ฝนหนัก',80:'ฝนซู่เล็กน้อย',81:'ฝนซู่',82:'ฝนซู่หนัก',95:'พายุฝนฟ้าคะนอง'};
+  el.textContent=Math.round(c.temperature_2m)+'°C';
+  desc.textContent=(map[c.weather_code]||'สภาพอากาศเปลี่ยนแปลงได้')+' • ความชื้น '+c.relative_humidity_2m+'% • ลม '+Math.round(c.wind_speed_10m)+' กม./ชม.';
+ }catch(e){el.textContent='เช็กไม่ได้';desc.textContent='กรุณาตรวจสอบสภาพอากาศก่อนเดินทาง'}
+}
+loadWeather();
+</script>
+</body>
+</html>
